@@ -21,7 +21,7 @@ title_separator          : "-"
 name                     : # "Your Name"
 description              : "SAP Spartacus JavaScript Storefront Documentation."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : /latest # the subpath of the site, represents versions in this site
+baseurl                  : # the subpath of the site, represents versions in this site
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : "/assets/images/logo-blue_64x64.png" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
