@@ -34,6 +34,9 @@ echo $build_dir
 echo "Checking out $v branch"
 git checkout $v
 
+# Create a configuration file that sets a new baseurl based on version
+echo "baseurl : /$v" > _config.$v.yml
+
 bundle install
 bundle exec jekyll build --config _config.yml,_config.$v.yml -d $build_dir/spartacus-docs/$v
 
@@ -58,8 +61,6 @@ echo "Copying all build files to new $v folder in spartacus-docs-version-test"
 cp -R $build_dir/spartacus-docs/$v /Users/i839916/doc-versions/spartacus-docs-version-test
 
 cd /Users/i839916/doc-versions/spartacus-docs-version-test
-
-# sleep 10s
 
 # Provides a publishing date stamp
 publishdate=`date +%m-%d-%Y`
