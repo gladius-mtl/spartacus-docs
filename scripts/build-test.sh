@@ -45,3 +45,7 @@ cp -R $clone_dir/spartacus-docs/_data $clone_dir/spartacus-docs/_includes $clone
 rm -r /Users/i839916/doc-versions/spartacus-docs-version-test/$v
 
 cp -R $build_dir/spartacus-docs/$v /Users/i839916/doc-versions/spartacus-docs-version-test
+
+git commit -a -m "Publishing $v to GitHub Pages"
+
+git push origin gh-pages
