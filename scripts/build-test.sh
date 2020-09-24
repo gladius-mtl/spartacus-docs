@@ -29,7 +29,7 @@ git clone git@github.com:gladius-mtl/spartacus-docs.git
 cd spartacus-docs
 build_dir="/tmp/$v-build_$last_SHA-`date +%H-%M-%S`"
 echo $build_dir
-git checkout stable/$v
+git checkout $v
 bundle install
 bundle exec jekyll build --config _config.yml,_config.$v.yml -d $build_dir/spartacus-docs/$v
 
