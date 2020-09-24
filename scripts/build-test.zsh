@@ -63,6 +63,9 @@ publishdate=`date +%m-%d-%Y`
 echo $publishdate
 echo $last_SHA
 
+echo "Staging all files in $v folder"
+git add $v
+
 echo "Committing all updated files"
 git commit -a -m "Publishing $v to GitHub Pages on $publishdate with $last_SHA"
 
