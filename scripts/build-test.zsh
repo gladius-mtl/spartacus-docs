@@ -53,10 +53,12 @@ cp -R $clone_dir/spartacus-docs/_data $clone_dir/spartacus-docs/_includes $clone
 echo "Deleting target $v folder"
 rm -r /Users/i839916/doc-versions/spartacus-docs-version-test/$v
 
-echo "Copying all build files to new $v folder"
+echo "Copying all build files to new $v folder in spartacus-docs-version-test"
 cp -R $build_dir/spartacus-docs/$v /Users/i839916/doc-versions/spartacus-docs-version-test
 
-sleep 10s
+cd /Users/i839916/doc-versions/spartacus-docs-version-test
+
+# sleep 10s
 
 # Provides a publishing date stamp
 publishdate=`date +%m-%d-%Y`
@@ -64,7 +66,7 @@ echo $publishdate
 echo $last_SHA
 
 echo "Staging all files in $v folder"
-git add --all
+git add $v
 
 echo "Committing all updated files"
 git commit -a -m "Publishing $v to GitHub Pages on $publishdate with $last_SHA"
