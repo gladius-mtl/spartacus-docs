@@ -56,8 +56,7 @@ rm -r /Users/i839916/doc-versions/spartacus-docs-version-test/$v
 echo "Copying all build files to new $v folder"
 cp -R $build_dir/spartacus-docs/$v /Users/i839916/doc-versions/spartacus-docs-version-test
 
-echo "Adding files to commit"
-git add $v
+sleep 10s
 
 echo "Committing all updated files"
 git commit -a -m "Publishing $v to GitHub Pages"
