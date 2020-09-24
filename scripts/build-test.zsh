@@ -34,9 +34,6 @@ echo $build_dir
 echo "Checking out $v branch"
 git checkout $v
 
-# Create a configuration file that sets a new baseurl based on version
-echo "baseurl : /$v" > _config.$v.yml
-
 bundle install
 bundle exec jekyll build --config _config.yml,_config.$v.yml -d $build_dir/spartacus-docs/$v
 
