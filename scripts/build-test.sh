@@ -12,7 +12,7 @@ last_SHA=( $(git rev-parse --short HEAD) )
 # The name of the temporary folder will be the
 #   last commit SHA, to prevent possible conflicts
 #   with other folder names.
-clone_dir="/tmp/clone_$last_SHA/"
+clone_dir="/tmp/$v-clone_$last_SHA-`date +%H-%M-%S`/"
 echo $last_SHA
 
 # Make sure Jekyll is installed locally
@@ -27,7 +27,7 @@ mkdir $clone_dir
 cd $clone_dir
 git clone git@github.com:gladius-mtl/spartacus-docs.git
 cd spartacus-docs
-build_dir="/tmp/build_$last_SHA"
+build_dir="/tmp/$v-build_$last_SHA-`date +%H-%M-%S`"
 echo $build_dir
 git checkout stable/$v
 bundle install
@@ -40,4 +40,8 @@ else
 #    exit 1
 fi
 
+cp -R $clone_dir/spartacus-docs/_data $clone_dir/spartacus-docs/_includes $clone_dir/spartacus-docs/_layouts $build_dir/spartacus-docs/$v
 
+rm -r /Users/i839916/doc-versions/spartacus-docs-version-test/$v
+
+cp -R $build_dir/spartacus-docs/$v /Users/i839916/doc-versions/spartacus-docs-version-test
