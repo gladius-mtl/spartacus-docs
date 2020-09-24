@@ -5,7 +5,8 @@
 
 # Variables
 installed="bundle"
-v=1.x
+for v in 1.x 3.x
+  do
 
 # Get the latest commit SHA in sourcedir branch
 last_SHA=( $(git rev-parse --short HEAD) )
@@ -73,3 +74,5 @@ git commit -a -m "Publishing $v to GitHub Pages on $publishdate with $last_SHA"
 
 echo "Files committed, pushing to master (publishing to GitHub Pages)"
 git push origin master
+
+done
