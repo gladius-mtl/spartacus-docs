@@ -12,7 +12,7 @@ last_SHA=( $(git rev-parse --short HEAD) )
 # The name of the temporary folder will be the
 #   last commit SHA, to prevent possible conflicts
 #   with other folder names.
-clone_dir="/tmp/clone_$last_SHA/"
+clone_dir="/tmp/$v-clone_$last_SHA/"
 echo $last_SHA
 
 # Make sure Jekyll is installed locally
@@ -27,9 +27,9 @@ mkdir $clone_dir
 cd $clone_dir
 git clone git@github.com:gladius-mtl/spartacus-docs.git
 cd spartacus-docs
-build_dir="/tmp/build_$last_SHA"
+build_dir="/tmp/$v-build_$last_SHA"
 echo $build_dir
-git checkout stable/$v
+git checkout $v
 bundle install
 bundle exec jekyll build --config _config.yml,_config.$v.yml -d $build_dir/spartacus-docs/$v
 
@@ -40,4 +40,21 @@ else
 #    exit 1
 fi
 
+# Check out master branch
+echo "Checking out master branch"
+git checkout master
 
+echo "Copying data, includes and layouts folders to the build directory"
+cp -R $clone_dir/spartacus-docs/_data $clone_dir/spartacus-docs/_includes $clone_dir/spartacus-docs/_layouts $build_dir/spartacus-docs/$v
+
+echo "Deleting target $v folder"
+rm -r /Users/i839916/doc-versions/spartacus-docs-version-test/$v
+
+echo "Copying all build files to new $v folder"
+cp -R $build_dir/spartacus-docs/$v /Users/i839916/doc-versions/spartacus-docs-version-test
+
+echo "Committing all updated files"
+git commit -a -m "Publishing $v to GitHub Pages"
+
+echo "Files committed, pushing to master (publishing to GitHub Pages)"
+git push origin master
