@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 # Builds current committed master branch from GitHub to gh-pages, replacing
 # everything in gh-pages. Intended to be run locally when you want to publish.
 # Run with the version number as a parameter.
