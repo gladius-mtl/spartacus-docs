@@ -44,8 +44,8 @@ else
 fi
 
 # Check out master branch
-echo "Checking out master branch"
-git checkout master
+# echo "Checking out master branch"
+# git checkout master
 
 echo "Copying data, includes and layouts folders to the build directory"
 cp -R $clone_dir/spartacus-docs/_data $clone_dir/spartacus-docs/_includes $clone_dir/spartacus-docs/_layouts $build_dir/spartacus-docs/$v
