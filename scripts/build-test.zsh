@@ -58,8 +58,13 @@ cp -R $build_dir/spartacus-docs/$v /Users/i839916/doc-versions/spartacus-docs-ve
 
 sleep 10s
 
+# Provides a publishing date stamp
+publishdate=`date +%m-%d-%Y`
+echo $publishdate
+echo $last_SHA
+
 echo "Committing all updated files"
-git commit -a -m "Publishing $v to GitHub Pages"
+git commit -a -m "Publishing $v to GitHub Pages on $publishdate with $last_SHA"
 
 echo "Files committed, pushing to master (publishing to GitHub Pages)"
 git push origin master
